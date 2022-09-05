@@ -6,6 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="test.js"></script>
+    <script>
+        console.log("프로그램 시작됨");
+
+        const alba = (name, pay, time)=>{
+            if(!name){
+                console.log("이름을 입력하세요");
+                return;
+            }
+            //숫자가 아님 , 최저시급보다 작을때, undifind 일때
+            if(undefined == pay || typeof pay !== `number` || 9620 > pay){
+                console.log("시급을 입력하세요");
+                return;
+            }
+            //숫자가 아님 , 0보다 작을때, undifind 일때
+            if(undefined == time || 0 > time){
+                console.log("근무시간을 입력하세요");
+                return;
+            }
+
+            console.log(`이름: ${name}`);
+            console.log(`시급: ${pay.toLocaleString()}`);
+            console.log(`근무시간: ${time}`);
+            console.log(`일당: ${(pay * time).toLocaleString()}`)
+            console.log(`>>>>>>>>>>>>>>>>>`)
+        };
+        alba("사람", 9620, 4);
+        alba("인간", 10000, 12);
+        alba("외계인", 12340,20);
+        
+
+    </script>
 </head>
 <body>
     <h1>
