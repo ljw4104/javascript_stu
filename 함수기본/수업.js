@@ -54,6 +54,15 @@ const refn = (acc, cur, idx, src) =>{
 }
 const result = arr.reduce(refn,0);
 console.log(result);
+
+const arry=[1,2,3,4,5];
+try {
+    val=200;
+}catch(err){
+    console.log(err);
+}finally {
+    console.log("마지막");
+}
  /*arr.push("홍길동");
  arr.push(1234);
  arr.push([1,2,3,4])
