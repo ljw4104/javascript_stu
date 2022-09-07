@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cat = document.querySelector("#avata");
+        cat.style.left = "300px";
+        cat.style.top = "300px";
+        let x = 20;
+        let y = 20;
+        document.addEventListener("keydown", (event) => {
+          console.log(event.keyCode);
+          switch (event.keyCode) {
+            case 37:
+              console.log(x);
+              x--;
+              cat.style.left = `${x}px`;
+              break;
+            case 38:
+              y--;
+              console.log(y);
+              cat.style.top = `${y}px`;
+              break;
+            case 39:
+              x++;
+              cat.style.left = `${x}px`;
+              break;
+            case 40:
+              console.log(y);
+              y++;
+              cat.style.top = `${y}px`;
+              break;
+          }
+        });
+      });
+    </script>
+    <style>
+      * {
+        font-size: 90px;
+      }
+      #avata {
+        position: absolute;
+        left: 200;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="avata">😒</div>
+  </body>
+</html>

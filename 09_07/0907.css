@@ -1,0 +1,41 @@
+* {
+  padding: 5px;
+  font-size: 40px;
+  color: black;
+}
+.sunmoon {
+  color: rebeccapurple;
+}
+#d {
+  color: red;
+}
+#con {
+  padding: 10px;
+  background-color: aquamarine;
+  border-radius: 20px;
+}
+#con span {
+  border-radius: 20px;
+  margin: 20px;
+  background-color: black;
+  font-weight: bold;
+}
+#con .sunmoon {
+  border: double red;
+}
+.ha {
+  color: blue;
+}
+#target {
+  background-color: #efefef;
+  display: inline;
+  padding: 5px 6px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  cursor: default;
+}
+#target:hover {
+  background-color: rgb(225, 225, 225);
+
+  border: 1px solid rgb(84, 84, 84);
+}

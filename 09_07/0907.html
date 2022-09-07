@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script></script>
+    <link rel="stylesheet" type="text/css" href="0907.css" />
+  </head>
+  <body>
+    <!-- <div class="sunmoon">div태그임</div>
+
+    <div id="con">
+      <span>안</span>
+      <span id="d">녕</span>
+      <span class="ha">하</span>
+      <span class="sun">세1</span>
+      <span class="sun">세2</span>
+      <span class="sun">세3</span>
+      <span>요</span>
+      <br />
+
+      <img src="https://api.lorem.space/image/watch?w=150&h=150" alt="" />
+      <img
+        class="cover"
+        src="https://api.lorem.space/image/movie?w=150&h=220"
+        alt=""
+      />
+    </div> -->
+    <div>
+      <div id="target">클릭</div>
+      <p>클릭횟수:<span class="count">0</span></p>
+      <button class="conect">이벤트 연결</button>
+      <button class="discon">이벤트 해제</button>
+      <button class="reset">초기화</button>
+      <p>이벤터 연결 상태:<span class="state">해제됨</span></p>
+    </div>
+    <script>
+      //   const newh1 = document.createElement("h1");
+      //   console.log(newh1);
+      //   newh1.textContent = "새로만든 div임";
+      //   document.body.appendChild(newh1);
+      //   const two = document.querySelector(`#two`);
+      //   const copy = newh1.cloneNode(newh1);
+      //   two.appendChild(copy);
+      //   console.log(two);
+      window.addEventListener("DOMContentLoaded", () => {
+        const target = document.querySelector("#target");
+        const conect = document.querySelector(".conect");
+        const discon = document.querySelector(".discon");
+        const count = document.querySelector(".count");
+        const state = document.querySelector(".state");
+        const reset = document.querySelector(".reset");
+
+        let mystate = false;
+        let mycount = 0;
+
+        const click = () => {
+          mycount++;
+          count.textContent = mycount;
+        };
+
+        conect.addEventListener("click", () => {
+          mystate = true;
+          target.addEventListener("click", click);
+          state.textContent = "연결됨 ✅";
+        });
+
+        discon.addEventListener("click", () => {
+          mystate = false;
+          target.removeEventListener("click", click);
+          state.textContent = "해제됨 ❌";
+        });
+
+        reset.addEventListener("click", () => {
+          mycount = 0;
+          count.textContent = mycount;
+        });
+      });
+      // const one = document.querySelector("#one");
+
+      // const callback = () => {
+      //   console.log("원클릭");
+      //   debug.textContent = "원클릭함";
+      // };
+      // one.addEventListener("click", callback);
+      // const two = document.querySelector("#two");
+      // two.addEventListener("click", () => {
+      //   console.log("투클릭");
+      //   debug.textContent = "투클릭함 첫번째 안됌";
+      //   one.removeEventListener("click", callback);
+      // });
+      // const three = document.querySelector("#three");
+      // three.addEventListener("click", () => {
+      //   console.log("쓰리클릭");
+      //   debug.textContent = "쓰리클릭함";
+      // });
+
+      // const debug = document.querySelector("#debug");
+      //   const div = document.querySelector("#con");
+      //   console.log(div);
+      //   let cont = 0;
+      //   document.addEventListener("mousedown", () => {
+      //     cont++;
+      //     console.log(`눌림`);
+      //   });
+      //   document.addEventListener("mouseup", () => {
+      //     cont++;
+      //     console.log(`떨어짐`);
+      //   });
+
+      //   window.addEventListener("DOMContentLoaded", () => {
+      //     const covers = document.querySelectorAll(".cover");
+      //     console.log(covers);
+      // for (var i = 0; i < covers.length; i++) {
+      //   covers[i].setAttribute("src", "https://placekitten.com/200/300");
+      // }
+      // covers.forEach((e, idx, allCovers) => {
+      //   //e = allCovers[idx]
+      //   e.setAttribute(
+      //     "src",
+      //     `https://placekitten.com/1${idx * 2}0/3${idx * 2}0`
+      //   );
+      // console.log("로딩");
+      // const sunmoon = document.querySelector(".sunmoon");
+      // console.log(sunmoon);
+      // sunmoon.textContent = `선문대학교`;
+      // const element = document.querySelector(`.cover`);
+      // console.log(element);
+      // element.setAttribute(
+      //   "src",
+      //   "https://api.lorem.space/image/movie?w=150&h=220"
+      // );
+      // const attr = element.getAttribute("src");
+      // console.log(attr);
+      //   });
+      // });
+    </script>
+  </body>
+</html>
