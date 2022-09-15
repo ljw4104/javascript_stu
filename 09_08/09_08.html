@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      document.onreadystatechange = (event) => {
+        const state = document.readyState;
+        console.log(state);
+      };
+
+      setTimeout(() => {
+        document.readyState = "loading";
+      }, 2000);
+    </script>
+  </head>
+  <body>
+    <div id="container">초기 컨테이너</div>
+    <!-- <input class="id" type="text" placeholder="아이디를 입력하세요." /> -->
+    <textarea name="" class="id" cols="30" rows="10"></textarea>
+    <br />
+    <input class="pw" type="password" placeholder="비밀번호를 입력하세요." />
+    <br />
+    <button id="submit">로그인</button>
+
+    <script>
+      console.log(document.readyState);
+
+      const btn = document.querySelector(`#submit`);
+      console.log(btn);
+      btn.addEventListener("click", () => {
+        const id = document.querySelector(".id");
+        const pw = document.querySelector(".pw");
+
+        console.log(id.value);
+        console.log(pw.value);
+      });
+    </script>
+  </body>
+</html>

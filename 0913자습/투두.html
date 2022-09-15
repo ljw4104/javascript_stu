@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>할일</h1>
+    <input type="text" id="todo" />
+    <button id="addBtton">엔터눌러</button>
+    <div id="todoList"></div>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector("#todo");
+      const todo = document.querySelector("#todoList");
+      const addBtton = document.querySelector("#addBtton");
+
+      let count = 0;
+
+      const temp = localStorage.getItem("todoArr");
+      let todoArr = temp ? JSON.parse(temp) : [];
+
+      todoArr.push({ todo: "우유 구매", checked: true });
+      todoArr.push({ todo: "커피 구매", checked: false });
+      todoArr.push({ todo: "병원 구매", checked: true });
+
+      function saveTodo() {
+        localStorage.setItem("todoArr", JSON.stringify(todoArr));
+      }
+
+      function randerTodo() {
+        //다지우고 다시 그리기
+        console.log("그리기");
+        todo.innerHTML = "";
+
+        todoArr.forEach((element) => {
+          const item = document.createElement("div");
+          const checkbox = document.createElement("input");
+          const text = document.createElement("span");
+          const button = document.createElement("button");
+
+          checkbox.type = "checkbox";
+          checkbox.addEventListener("change", (e) => {
+            item.style.textDecoration = e.target.checked ? "line-through" : "";
+          });
+
+          text.textContent = element.todo;
+          button.textContent = "❌";
+        });
+      }
+
+      saveTodo();
+      randerTodo();
+
+      const addTodo = () => {
+        if (input.value.trim() === "") {
+          alert("할일을 적어주세요");
+          return;
+        }
+
+        const item = document.createElement("div");
+        const checkbox = document.createElement("input");
+        const text = document.createElement("span");
+        const button = document.createElement("button");
+
+        const key = count;
+        count += 1;
+
+        item.setAttribute("datakey", key);
+        item.appendChild(checkbox);
+        item.appendChild(text);
+        item.appendChild(button);
+        item.style.marginTop = "20px";
+        item.style.fontSize = "20px";
+        todo.appendChild(item);
+
+        checkbox.type = "checkbox";
+        checkbox.addEventListener("change", (e) => {
+          item.style.textDecoration = e.target.checked ? "line-through" : "";
+        });
+
+        console.log(todoArr);
+
+        text.textContent = input.value;
+
+        button.textContent = "❌";
+        button.addEventListener("click", () => {
+          removeTodo(key);
+        });
+      };
+
+      input.value = "";
+
+      //   // let lcStorage = localStorage.setItem(a, JSON.stringify(`${todo}`));
+      //   // console.log(localStorage.setItem(todo, JSON.stringify(`${todo}`)));
+
+      const removeTodo = (key) => {
+        const item = document.querySelector(`[datakey="${key}"]`);
+        todo.removeChild(item);
+      };
+
+      addBtton.addEventListener("click", addTodo);
+      input.addEventListener("keyup", (e) => {
+        const ENTER = 13;
+        if (e.keyCode === ENTER) {
+          addTodo();
+        }
+      });
+    });
+  </script>
+</html>

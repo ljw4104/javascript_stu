@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>글자수 세기</h1>
+    <textarea id="text" cols="30" rows="10"></textarea>
+    <p id="submit">글자수 : <span class="glza"></span></p>
+  </body>
+  <script>
+    const btn = document.querySelector("#submit");
+    document.addEventListener("keyup", () => {
+      const text = document.querySelector("#text");
+      let count = text.value.length;
+      const glza = document.querySelector(".glza");
+      glza.textContent = count;
+    });
+  </script>
+</html>
